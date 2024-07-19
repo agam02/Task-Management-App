@@ -1,0 +1,17 @@
+<div class="container">
+    {{boardService.boards[1]|json}}
+    <div class="content-wrapper" >
+        <button mat-button class="new-button" (click)="newCard()" >New Card</button>
+        <div class="board-card" *ngFor="let card of boardService.boards[index].cards;let i=index; ">
+            <div class="title">
+               {{card.title}}
+            </div>
+            <div class="checkbox-container" *ngFor="let chk of card.checkList;let ind = index;" >
+                <mat-checkbox (change)="boardService.updateDataToLocalStorage()" class="checkbox" [(ngModel)]="card.status[ind]">{{chk}}</mat-checkbox>
+            </div>
+            <div class="actions">
+                <button mat-button class="new-button" (click)="editCard(i)" [disabled]="">Edit</button>
+                <button mat-button class="delete-button" (click)="deleteCard(i)">Delete</button>
+            </div>
+        </div>
+</div>

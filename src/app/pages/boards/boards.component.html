@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="content-wrapper">
+        <button mat-button class="new-button" (click)="openNewBoard()">New Board</button>
+        <div class="board-card" *ngFor="let board of boardService.boards;let i=index" [routerLink]="'/viewboard/' +i ">
+            <div class="title">
+                {{board.title}}
+            </div>
+            <div class="actions">
+               <button mat-icon-button><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+</div>
